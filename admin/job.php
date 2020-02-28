@@ -45,4 +45,52 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="createJob">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h3>Create New Job</h3>
+					<form class="form-horizontal p-4" method="post" action="job.php">
+						<div class="row form-group">
+							<label class="control-label" for="category">Job Category</label>
+							<select class="form-control" name="category">
+								<option>--Select Category---</option>
+								<?php while($row = mysqli_fetch_assoc($categories)):?>
+									<option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
+								<?php endwhile;?>
+							</select>
+						</div>
+						<div class="row form-group">
+							<label class="control-label" for="positiion">Job Position</label>
+							<select class="form-control" name="position">
+								<option>--Select Job Position--</option>
+								<?php while($row = mysqli_fetch_assoc($positions)):?>
+									<option value="<?php echo $row['id'];?>" <?php echo $row['id']==1 ? 'selected' : '';?>> 
+										<?php echo $row['name'];?></option>
+								<?php endwhile;?>
+							</select>
+						</div>
+						<div class="row form-group">
+							<label class="control-label" for="title">Job Title</label>
+							<input type="text" name="title" id="title" class="form-control">
+						</div>
+						<div class="row form-group">
+							<label class="control-label" for="desription">Job Descriptioon</label>
+							<textarea name="description" id="description" class="form-control"></textarea>
+						</div>
+						<div class="row form-group">
+							<label class="control-label" for="requirement">Job Requirement</label>
+							<textarea name="requirement" id="requirement" class="form-control"></textarea>
+						</div>
+						<div class="form-group text-center">
+							<button class="btn btn-success">Save</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<?php session_unset();
+?>
